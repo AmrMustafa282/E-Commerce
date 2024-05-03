@@ -7,10 +7,13 @@ const Product = ({ product }) => {
       <CardHeader>
         <img src={Images.product[0]} alt="product.name" />
       </CardHeader>
-      <CardContent></CardContent>
-      <CardTitle>{product.name}</CardTitle>
-      <CardDescription>{product.disc}</CardDescription>
-      <CardFooter>Price: {product.price}</CardFooter>
+      <CardContent>
+        <CardTitle>{product.name}</CardTitle>
+        <CardDescription>{product.disc}</CardDescription>
+      </CardContent>
+      <CardFooter>
+        <p>Price: {product.price}</p>
+      </CardFooter>
     </Card>
   );
 };
