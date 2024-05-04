@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { NavigationMenuDemo } from "./NavigationMenu";
 import { Link, useNavigate } from "react-router-dom";
 import { Heart, Search, ShoppingCart, User } from "lucide-react";
@@ -12,14 +12,10 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 const Header = () => {
   const nav = useNavigate();
   return (
@@ -53,12 +49,7 @@ const Header = () => {
           <Button variant="ghost" size="icon" className="p-2 box-content ">
             <Heart className="w-8 h-8 " />
           </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="p-2 box-content"
-            onClick={() => nav("/cart")}
-          >
+          <Button variant="ghost" size="icon" className="p-2 box-content">
             <ShoppingCart className="w-8 h-8 " />
           </Button>
           <DropdownMenu>
@@ -83,5 +74,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;
