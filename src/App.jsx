@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Cart from "./components/Cart";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
     </>
   );
