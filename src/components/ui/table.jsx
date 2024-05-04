@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { deleteItem } from "@/rtk/slices/cart-slice";
+import { Trash2 } from "lucide-react";
 const createTableComponent = (elementType, defaultClassName) =>
   React.forwardRef(({ className, ...props }, ref) => {
     const Element = elementType;
@@ -63,7 +64,7 @@ const TableButton = () => {
         deleteItem();
       }}
     >
-      Delete
+      <Trash2 />
     </Button>
   );
 };
