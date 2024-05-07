@@ -41,9 +41,9 @@ const Home = () => {
    <HomeCarousel />
    <div className="my-12">
     {loading ? (
-     <div className="flex justify-between flex-wrap">
+     <div className="flex justify-between flex-wrap" >
       {[1, 2, 3, 4].map((index) => (
-       <div className="flex flex-col space-y-3">
+       <div className="flex flex-col space-y-3" key={index}>
         <Skeleton className="h-[180px] w-[300px] rounded-xl" />
         <div className="space-y-2">
          <Skeleton className="h-4 w-[250px]" />
