@@ -9,7 +9,7 @@ const products = [
     name: "Laptop MSI GF63",
     desc: "Laptop MSI GF63 Thin 11SC - Core I5 11400H - Nvidia geforce GTX 1650 4GB - 8GB DDR4 3200MHz - 512GB SSD NVMe - 15.6 FHD 144HZ",
     type: "Laptop",
-    price: "3899924 EGP",
+    price: "38,924 EGP",
   },
   {
     id: 2,

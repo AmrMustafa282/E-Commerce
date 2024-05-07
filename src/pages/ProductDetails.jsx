@@ -1,18 +1,15 @@
-import Product from "@/components/Product";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   CarouselScrollTo,
 } from "@/components/ui/carousel";
 import products from "@/lib/productsData";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const ProductDetails = () => {
+const ProductDetails = ({ setCartItems }) => {
   const [index, setIndex] = useState(0);
 
   const { id: productId } = useParams();
@@ -48,7 +45,7 @@ const ProductDetails = () => {
         </div>
         <div className="grid grid-cols-3 w-full gap-4">
           {product.images.map((img, index) => (
-            <img src={img} alt={product.name} onClick={() => setIndex(index)} />
+            <img src={img} alt={product.name} key={product.id} onClick={() => setIndex(index)} />
           ))}
         </div>
       </div>
