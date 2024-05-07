@@ -10,7 +10,7 @@ import App from "./App";
 ReactDOM.createRoot(document.getElementById("root")).render(
  <React.StrictMode>
   <Router>
-   <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+   <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
     <Layout>
      <App />
     </Layout>
