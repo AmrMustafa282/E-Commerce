@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { deleteItem } from "@/rtk/slices/cart-slice";
+import deleteFromDatabase from "./deleteFromDatabase";
 function FetchCart() {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function FetchCart() {
   return (
     <>
       <TableBody>
-        {products.map((invoice) => (
+        {products.map((invoice, index) => (
           <TableRow key={invoice.id}>
             <TableCell className="font-medium">{invoice.id}</TableCell>
             <TableCell>{invoice.name}</TableCell>
@@ -30,6 +31,7 @@ function FetchCart() {
                 variant="destructive"
                 onClick={() => {
                   dispatch(deleteItem(invoice.id));
+                  deleteFromDatabase("cartProducts", index);
                 }}
               >
                 <Trash2 />

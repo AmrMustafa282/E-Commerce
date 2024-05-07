@@ -7,8 +7,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  CarouselScrollTo,
 } from "@/components/ui/carousel";
+import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
+import saveToDatabase from "@/components/utils/saveToDatabase";
 import { addItem } from "@/rtk/slices/cart-slice";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -50,6 +51,9 @@ const ProductDetails = () => {
             <Button
               onClick={() => {
                 dispatch(addItem(product));
+                const savedProducts = fetchFromDatabase("cartProducts") || [];
+                savedProducts.push(product);
+                saveToDatabase("cartProducts", savedProducts);
               }}
             >
               Add to cart

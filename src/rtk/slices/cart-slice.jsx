@@ -1,7 +1,9 @@
+import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
+import saveToDatabase from "@/components/utils/saveToDatabase";
 import { createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 export const cartSlice = createSlice({
-  initialState: [],
+  initialState: fetchFromDatabase("cartProducts") || [],
   name: "Cart",
   reducers: {
     addItem: (state, action) => {
@@ -34,6 +36,7 @@ export const cartSlice = createSlice({
           showConfirmButton: false,
           timer: 1500,
         });
+        saveToDatabase("cartProducts", []);
         return [];
       }
     },
