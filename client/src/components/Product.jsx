@@ -1,23 +1,38 @@
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./ui/card";
+import { Check } from "lucide-react";
+import { Button } from "./ui/button";
+import {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "./ui/card";
 
 const Product = ({ product }) => {
   return (
-    <Card>
-      <CardHeader>
-        <img src={product.images[0]} alt={product.name} />
-      </CardHeader>
-      <CardContent>
-        <CardTitle>
-          {product.name.length > 70
-            ? String(product.name).substring(0, 70) + "......."
-            : product.name}
-        </CardTitle>
-        <CardDescription>{product.disc}</CardDescription>
-      </CardContent>
-      <CardFooter>
-        <p>Price: {product.price}</p>
-      </CardFooter>
-    </Card>
+    <>
+      <Card className="h-6/6" key={product.id}>
+        <div className="flex flex-col">
+          <CardHeader>
+            <img
+              className="max-w-60 h-48"
+              src={product.images[0]}
+              alt={product.name}
+            />
+          </CardHeader>
+          <CardContent>
+            <CardTitle>{product.name}</CardTitle>
+            <CardDescription>
+              {product.description.slice(0, 60)}
+            </CardDescription>
+          </CardContent>
+        </div>
+        <CardFooter>
+          <p>Price: {product.price}</p>
+        </CardFooter>
+      </Card>
+    </>
   );
 };
 
