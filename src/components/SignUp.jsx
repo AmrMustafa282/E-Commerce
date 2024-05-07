@@ -13,31 +13,38 @@ const SignUp = () => {
 
   return (
     <div className='text-center container '>
-      <h2 className='text-2xl font-bold'>Create Account</h2>
+      <h2 className='text-2xl font-bold' >Create Account</h2>
       <form onSubmit={handleSubmit}>
         <div className=' my-5 '>
-          <label htmlFor="username">Username </label>
+          <label htmlFor="username" className='font-bold text-xl mx-3'>Username </label>
           <input
             type="text"
             id="username"
             placeholder='username'
-            className='focus:outline-slate-500 text-slate-900 bg-gray-50 border border-gray-300 '
+            className=' focus:outline-slate-500 text-slate-900 rounded-lg w-60 p-1'
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className=''>
-          <label htmlFor="password">Password </label>
+          <label htmlFor="password" className=' font-bold text-xl mx-3' >Password </label>
           <input
             placeholder='***********'
-            className='focus:outline-slate-500 text-slate-900'
+            className=' focus:outline-slate-500 text-slate-900 rounded-lg w-60 p-1 my-2'
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className='my-5 bg-slate-800 p-1 transition-colors duration-500 w-32 font-sans font-bold my-5 rounded hover:bg-slate-700 h ...'>Sign up</button>
+        <div>
+          <input id='termsCheckBox' type="checkbox" className='mx-4 my-4
+          ' />
+          <label htmlFor="termsCheckBox">I accept terms and conditions</label>
+
+        </div>
+        <button type="submit" className='my-7 bg-slate-800 p-1 transition-colors duration-500 w-44 font-sans font-bold  rounded-xl hover:bg-slate-700 h ...'>Sign up</button>
+
       </form>
     </div>
   )
