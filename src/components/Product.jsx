@@ -12,7 +12,7 @@ import {
 const Product = ({ product }) => {
   return (
     <>
-      <Card className="h-96">
+      <Card className="h-6/6" key={product.id}>
         <div className="flex flex-col">
           <CardHeader>
             <img

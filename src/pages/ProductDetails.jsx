@@ -11,12 +11,12 @@ import {
 } from "@/components/ui/carousel";
 import { addItem } from "@/rtk/slices/cart-slice";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-
 const ProductDetails = () => {
   let { productId } = useParams();
   const [product, setProduct] = useState();
-
+  const dispatch = useDispatch();
   useEffect(() => {
     fetch(`http://localhost:9000/products/${productId}`)
       .then((res) => res.json())
@@ -46,10 +46,9 @@ const ProductDetails = () => {
           <div className="content-center flex flex-col gap-3">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <h2>{product.price}</h2>
+            <h2>${product.price}</h2>
             <Button
               onClick={() => {
-                // console.log("added");
                 dispatch(addItem(product));
               }}
             >

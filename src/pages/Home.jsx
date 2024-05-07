@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { fetchProducts } from "@/rtk/slices/products-slice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const products = useSelector((state) => state.products);
@@ -12,7 +12,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
-  const nav = useNavigate();
   return (
     <div className="w-full">
       <HomeCarousel />
