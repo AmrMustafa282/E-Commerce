@@ -1,0 +1,122 @@
+[
+ {
+  "name": "Gaming Laptop",
+  "description": "Powerful laptop designed for gaming enthusiasts.",
+  "price": 1499,
+  "images": ["https://source.unsplash.com/400x300/?laptop"]
+ },
+ {
+  "name": "High-End Desktop PC",
+  "description": "Custom-built desktop PC for professional work and gaming.",
+  "price": 1999,
+  "images": ["https://source.unsplash.com/400x300/?pc"]
+ },
+ {
+  "name": "Wireless Headphones",
+  "description": "Premium wireless headphones with noise-cancellation feature.",
+  "price": 299,
+  "images": ["https://source.unsplash.com/400x300/?headphones"]
+ },
+ {
+  "name": "Mechanical Keyboard",
+  "description": "Mechanical keyboard with RGB lighting and customizable keys.",
+  "price": 129,
+  "images": ["https://source.unsplash.com/400x300/?keyboard"]
+ },
+ {
+  "name": "Ergonomic Mouse",
+  "description": "Ergonomic mouse designed for comfortable long-hour usage.",
+  "price": 49,
+  "images": ["https://source.unsplash.com/400x300/?mouse"]
+ },
+ {
+  "name": "27-inch 4K Monitor",
+  "description": "High-resolution 4K monitor for crystal-clear visuals.",
+  "price": 499,
+  "images": ["https://source.unsplash.com/400x300/?monitor"]
+ },
+ {
+  "name": "Intel Core i9 Processor",
+  "description": "Top-of-the-line processor for high-performance computing tasks.",
+  "price": 699,
+  "images": ["https://source.unsplash.com/400x300/?processors"]
+ },
+ {
+  "name": "NVIDIA GeForce RTX 3080",
+  "description": "Powerful graphics card for smooth gaming and rendering.",
+  "price": 799,
+  "images": ["https://source.unsplash.com/400x300/?graphicscard"]
+ },
+ {
+  "name": "Ultra-Slim Laptop",
+  "description": "Thin and lightweight laptop for on-the-go productivity.",
+  "price": 899,
+  "images": ["https://source.unsplash.com/400x300/?laptop"]
+ },
+ {
+  "name": "Gaming PC Tower",
+  "description": "Custom-built gaming PC tower with RGB lighting and liquid cooling.",
+  "price": 2499,
+  "images": ["https://source.unsplash.com/400x300/?pc"]
+ },
+ {
+  "name": "Noise-Cancelling Headphones",
+  "description": "Premium headphones with active noise cancellation technology.",
+  "price": 349,
+  "images": ["https://source.unsplash.com/400x300/?headphones"]
+ },
+ {
+  "name": "RGB Mechanical Keyboard",
+  "description": "Mechanical keyboard with customizable RGB lighting effects.",
+  "price": 159,
+  "images": ["https://source.unsplash.com/400x300/?keyboard"]
+ },
+ {
+  "name": "Wireless Gaming Mouse",
+  "description": "Wireless mouse optimized for gaming performance and precision.",
+  "price": 79,
+  "images": ["https://source.unsplash.com/400x300/?mouse"]
+ },
+ {
+  "name": "34-inch UltraWide Monitor",
+  "description": "Ultra-wide monitor for immersive gaming and multitasking.",
+  "price": 799,
+  "images": ["https://source.unsplash.com/400x300/?monitor"]
+ },
+ {
+  "name": "AMD Ryzen 9 Processor",
+  "description": "High-performance processor for gaming and content creation.",
+  "price": 499,
+  "images": ["https://source.unsplash.com/400x300/?processors"]
+ },
+ {
+  "name": "NVIDIA GeForce RTX 3070",
+  "description": "Graphics card with ray tracing technology for realistic gaming graphics.",
+  "price": 599,
+  "images": ["https://source.unsplash.com/400x300/?graphicscard"]
+ },
+ {
+  "name": "Convertible Touchscreen Laptop",
+  "description": "Laptop with touchscreen display and 360-degree hinge for versatility.",
+  "price": 1199,
+  "images": ["https://source.unsplash.com/400x300/?laptop"]
+ },
+ {
+  "name": "Compact Mini PC",
+  "description": "Small-sized mini PC for space-saving desktop computing.",
+  "price": 399,
+  "images": ["https://source.unsplash.com/400x300/?pc"]
+ },
+ {
+  "name": "Bluetooth Earbuds",
+  "description": "Compact earbuds with Bluetooth connectivity for wireless listening.",
+  "price": 99,
+  "images": ["https://source.unsplash.com/400x300/?headphones"]
+ },
+ {
+  "name": "Backlit Gaming Keyboard",
+  "description": "Gaming keyboard with customizable backlit keys for enhanced visibility.",
+  "price": 89,
+  "images": ["https://source.unsplash.com/400x300/?keyboard"]
+ }
+]
