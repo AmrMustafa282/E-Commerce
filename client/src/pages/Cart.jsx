@@ -40,7 +40,7 @@ export function Cart() {
             <TableHead className="text-right">Price</TableHead>
           </TableRow>
         </TableHeader>
-        {FetchCart()}
+        <FetchCart />
       </Table>
     </div>
   );
