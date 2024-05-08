@@ -15,10 +15,10 @@ import { addItem } from "@/rtk/slices/cart-slice";
 import axios from "axios";
 import { Heart } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  let counter=1;
  const [products, setProducts] = useState([]);
  const [loading, setLoading] = useState(false);
  const dispatch = useDispatch();
@@ -62,6 +62,8 @@ const Home = () => {
         className="w-[300px] hover:shadow-lg duration-300"
         key={product._id}
        >
+        <Link to={`products/${product._id}`}>
+        
         <CardHeader>
          <img src={product.images[0]} />
         </CardHeader>
@@ -72,17 +74,21 @@ const Home = () => {
          </div>
          <p className="line-clamp-2">{product.description}</p>
         </CardContent>
+        </Link>
         <CardFooter className="flex justify-between">
          <Button variant="outline" size="icon">
           <Heart />
          </Button>
          <Button
               onClick={() => {
-                let tempProduct = { ...product };
-                tempProduct._id=counter++;
-                dispatch(addItem(tempProduct));
                 const savedProducts = fetchFromDatabase("cartProducts") || [];
-                savedProducts.push(product);
+                let tempProduct = {
+                  ...product,
+                  localId: savedProducts.length+1,
+                };
+                dispatch(addItem(tempProduct));
+                console.log(tempProduct);
+                savedProducts.push(tempProduct);
                 saveToDatabase("cartProducts", savedProducts);
               }}
             >

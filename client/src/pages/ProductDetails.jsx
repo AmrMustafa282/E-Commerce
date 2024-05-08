@@ -10,28 +10,20 @@ import {
 } from "@/components/ui/carousel";
 import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
 import saveToDatabase from "@/components/utils/saveToDatabase";
-import { formater } from "@/lib/utils";
 import { addItem } from "@/rtk/slices/cart-slice";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 const ProductDetails = () => {
   let { productId } = useParams();
   const [product, setProduct] = useState();
   const dispatch = useDispatch();
-  const fetchProduct = async () => {
-    try {
-      const res = await axios.get(`/api/products/${productId}`);
-      setProduct(res.data.product[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const cartProducts = useSelector((state) => state.cart);
   useEffect(() => {
-    fetchProduct();
+    fetch(`/api/products/${productId}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
   }, []);
-  console.log(product);
   return (
     <>
       {product && (
@@ -39,11 +31,15 @@ const ProductDetails = () => {
           <div>
             <Carousel className="max-w-md">
               <CarouselContent>
-                {product?.images.map((el) => (
-                  <CarouselItem key={product._id}>
-                    <img src={el} alt={product.name} />
-                  </CarouselItem>
-                ))}
+                <CarouselItem>
+                  <img src={product.images[0]} alt={product.id} />
+                </CarouselItem>
+                <CarouselItem>
+                  <img src={product.images[1]} alt={product.id} />
+                </CarouselItem>
+                <CarouselItem>
+                  <img src={product.images[2]} alt={product.id} />
+                </CarouselItem>
               </CarouselContent>
               <CarouselPrevious />
               <CarouselNext />
@@ -52,12 +48,16 @@ const ProductDetails = () => {
           <div className="content-center flex flex-col gap-3">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <h2>{formater(product.price)}</h2>
+            <h2>${product.price}</h2>
             <Button
               onClick={() => {
-                dispatch(addItem(product));
+                let tempProduct = {
+                  ...product,
+                  localId: cartProducts.length,
+                };
+                dispatch(addItem(tempProduct));
                 const savedProducts = fetchFromDatabase("cartProducts") || [];
-                savedProducts.push(product);
+                savedProducts.push(tempProduct);
                 saveToDatabase("cartProducts", savedProducts);
               }}
             >
