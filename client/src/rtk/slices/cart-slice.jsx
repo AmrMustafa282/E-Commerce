@@ -14,6 +14,7 @@ export const cartSlice = createSlice({
         showConfirmButton: false,
         timer: 1500,
       });
+      action.payload.amount+=1;
       state.push(action.payload);
     },
     deleteItem: (state, action) => {
@@ -24,7 +25,7 @@ export const cartSlice = createSlice({
         showConfirmButton: false,
         timer: 1500,
       });
-      return state.filter((item) => item.id !== action.payload);
+      return state.filter((item) => item._id !== action.payload);
     },
 
     clear: (state, action) => {

@@ -7,17 +7,21 @@ import {
  CardFooter,
  CardHeader,
 } from "@/components/ui/card";
-
 import { Skeleton } from "@/components/ui/skeleton";
+import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
+import saveToDatabase from "@/components/utils/saveToDatabase";
 import { formater } from "@/lib/utils";
+import { addItem } from "@/rtk/slices/cart-slice";
 import axios from "axios";
 import { Heart } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  let counter=1;
  const [products, setProducts] = useState([]);
  const [loading, setLoading] = useState(false);
-
+ const dispatch = useDispatch();
  const fetchProducts = async () => {
   setLoading(true);
   try {
@@ -35,7 +39,6 @@ const Home = () => {
  useEffect(() => {
   fetchProducts();
  }, []);
-
  return (
   <div className="w-full">
    <HomeCarousel />
@@ -73,7 +76,18 @@ const Home = () => {
          <Button variant="outline" size="icon">
           <Heart />
          </Button>
-         <Button>Add To Card</Button>
+         <Button
+              onClick={() => {
+                let tempProduct = { ...product };
+                tempProduct._id=counter++;
+                dispatch(addItem(tempProduct));
+                const savedProducts = fetchFromDatabase("cartProducts") || [];
+                savedProducts.push(product);
+                saveToDatabase("cartProducts", savedProducts);
+              }}
+            >
+              Add to cart
+            </Button>
         </CardFooter>
        </Card>
       ))}
@@ -83,5 +97,4 @@ const Home = () => {
   </div>
  );
 };
-
 export default Home;

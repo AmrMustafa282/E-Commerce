@@ -23,15 +23,15 @@ function FetchCart() {
     <>
       <TableBody>
         {products.map((invoice, index) => (
-          <TableRow key={invoice.id}>
-            <TableCell className="font-medium">{invoice.id}</TableCell>
+          <TableRow key={invoice._id}>
+            <TableCell className="font-medium">{invoice._id}</TableCell>
             <TableCell>{invoice.name}</TableCell>
             <TableCell className="text-right">
               <Button
                 variant="destructive"
                 onClick={() => {
-                  dispatch(deleteItem(invoice.id));
                   deleteFromDatabase("cartProducts", index);
+                  dispatch(deleteItem(invoice._id));
                 }}
               >
                 <Trash2 />
