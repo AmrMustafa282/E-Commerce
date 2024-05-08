@@ -12,14 +12,15 @@ import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
 import saveToDatabase from "@/components/utils/saveToDatabase";
 import { addItem } from "@/rtk/slices/cart-slice";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 const ProductDetails = () => {
   let { productId } = useParams();
   const [product, setProduct] = useState();
   const dispatch = useDispatch();
+  const cartProducts = useSelector((state) => state.cart);
   useEffect(() => {
-    fetch(`http://localhost:9000/products/${productId}`)
+    fetch(`/api/products/${productId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -50,9 +51,13 @@ const ProductDetails = () => {
             <h2>${product.price}</h2>
             <Button
               onClick={() => {
-                dispatch(addItem(product));
+                let tempProduct = {
+                  ...product,
+                  localId: cartProducts.length,
+                };
+                dispatch(addItem(tempProduct));
                 const savedProducts = fetchFromDatabase("cartProducts") || [];
-                savedProducts.push(product);
+                savedProducts.push(tempProduct);
                 saveToDatabase("cartProducts", savedProducts);
               }}
             >
