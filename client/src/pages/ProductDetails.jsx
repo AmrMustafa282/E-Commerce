@@ -10,7 +10,9 @@ import {
 } from "@/components/ui/carousel";
 import fetchFromDatabase from "@/components/utils/fetchFromDatabase";
 import saveToDatabase from "@/components/utils/saveToDatabase";
+import { formater } from "@/lib/utils";
 import { addItem } from "@/rtk/slices/cart-slice";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -19,10 +21,20 @@ const ProductDetails = () => {
   const [product, setProduct] = useState();
   const dispatch = useDispatch();
   const cartProducts = useSelector((state) => state.cart);
+  const getProduct = async () => {
+    try {
+      const res = await axios(`/api/products/${productId}`);
+      console.log(res.data);
+      setProduct(res.data.product[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    fetch(`/api/products/${productId}`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data));
+    // fetch(`/api/products/${productId}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setProduct(data));
+    getProduct();
   }, []);
   return (
     <>
@@ -48,7 +60,7 @@ const ProductDetails = () => {
           <div className="content-center flex flex-col gap-3">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <h2>${product.price}</h2>
+            <h2>{formater(product.price)}</h2>
             <Button
               onClick={() => {
                 let tempProduct = {

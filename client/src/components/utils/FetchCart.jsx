@@ -1,14 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import { Trash2 } from "lucide-react";
-import {
-  TableBody,
-  TableCell,
-  TableFooter,
-  TableRow,
-} from "@/components/ui/table";
+import { TableBody, TableCell, TableFooter, TableRow } from "@/components/ui/table";
 import { deleteItem } from "@/rtk/slices/cart-slice";
 import deleteFromDatabase from "./deleteFromDatabase";
+import { formater } from "@/lib/utils";
 function FetchCart() {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -24,7 +20,7 @@ function FetchCart() {
       <TableBody>
         {products.map((invoice, index) => (
           <TableRow key={invoice.localId}>
-            <TableCell className="font-medium">{index+1}</TableCell>
+            <TableCell className="font-medium">{index + 1}</TableCell>
             <TableCell>{invoice.name}</TableCell>
             <TableCell className="text-right">
               <Button
@@ -37,14 +33,14 @@ function FetchCart() {
                 <Trash2 />
               </Button>
             </TableCell>
-            <TableCell className="text-right">${invoice.price}</TableCell>
+            <TableCell className="text-right">{formater(invoice.price)}</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">${totalPrice()}</TableCell>
+          <TableCell className="text-right">{formater(totalPrice())}</TableCell>
         </TableRow>
       </TableFooter>
     </>
